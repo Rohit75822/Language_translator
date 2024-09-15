@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translation Tool</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/258/195/822/flag-flags-countries-symbol-wallpaper-preview.jpg');
+            background-size: cover; /* Cover the entire background */
+            text-align: center;
+            background-repeat: no-repeat; /* Prevent repeating the image */
+            padding: 20px;
+            color: #ffffff; /* Default text color */
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 600px;
+            margin: 0 auto; /* Center the container */
+            background-color: rgba(20, 20, 20, 0.8); /* Semi-transparent dark background for the container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Deeper shadow for dark theme */
+        }
+
+        /* Heading styles */
+        h1 {
+            text-align: center;
+            color: #ffffff; /* White text for heading */
+        }
+
+        /* Textarea styles */
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+            background-color: #333; /* Dark background for textarea */
+            color: #ffffff; /* White text */
+            border: none;
+            border-radius: 5px;
+            padding: 10px; /* Padding for textarea */
+            resize: none; /* Disable resizing */
+        }
+
+        /* Select and button styles */
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #333; /* Dark background for select and button */
+            color: #ffffff; /* White text */
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Button hover effect */
+        button {
+            background-color: #6200ea; /* Purple background for button */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #3700b3; /* Darker purple on hover */
+        }
+
+        /* Output text styles */
+        h2 {
+            color: #ffffff; /* White text for output heading */
+            margin-top: 30px; /* Margin above the heading */
+        }
+
+        #outputText {
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #333; /* Dark background for output text */
+            padding: 10px; /* Padding for output text */
+            border-radius: 5px; /* Rounded corners */
+            color: #ffffff; /* White text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Language Translation Tool</h1>
+        <form action="/translate" method="post">
+            <textarea name="text" placeholder="Enter text to translate" required></textarea>
+            <select name="lang" required>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="hi">Hindi</option>
+                <option value="zh-cn">Chinese</option>
+                <option value="te">Telugu</option> <!-- Telugu -->
+                <option value="it">Italian</option> <!-- Italian -->
+                <option value="ja">Japanese</option> <!-- Japanese -->
+            </select>
+            <button type="submit">Translate</button>
+        </form>
+
+        {% if translated_text %}
+            <h2>Translated Text:</h2>
+            <p id="outputText">{{ translated_text }}</p> <!-- Updated for output styling -->
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
